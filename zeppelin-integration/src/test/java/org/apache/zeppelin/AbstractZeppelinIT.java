@@ -79,6 +79,11 @@ abstract public class AbstractZeppelinIT {
     clickAndWait(by);
   }
 
+  protected void cancelParagraph(int paragraphNo) {
+    By by = By.xpath(getParagraphXPath(paragraphNo) + "//span[@class='icon-control-pause']");
+    WebElement cancelButton = pollingWait(by, 5);
+    cancelButton.click();
+  }
 
   protected String getParagraphXPath(int paragraphNo) {
     return "(//div[@ng-controller=\"ParagraphCtrl\"])[" + paragraphNo + "]";
